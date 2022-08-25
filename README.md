@@ -32,7 +32,9 @@ ProCare: [https://github.com/kimeguida/ProCare](https://github.com/kimeguida/Pro
 `cd aligned_fragments/` <br>
 `python ../scripts/procare_launcher.py -s <subpocket> -t ../cdk8_structures/5hbh_cavityALL_p0-p1-p6.mol2 --transform --ligandtransform <fragment>` <br>
 
-Outputs: aligned subpockets, fragments and `procare_scores.tsv`
+Outputs: aligned subpockets, fragments and `procare_scores.tsv` available on [zenodo](https://zenodo.org/record/7023191) <br>
+subpocket: cfh_xx_fragN_cavity4.mol2 <br>
+fragment: cfh_xx_fragN.mol2 <br>
 
 
 ### 2. Convert aligned fragments from mol2 to sdf
@@ -41,9 +43,16 @@ We used OpenEye python toolkits (state of our conda env: envs/oepython.yml): <br
 `conda activate oepython` <br>
 `../scripts/convert.py <fragment>.mol2 <fragment>.sdf` <br>
 
+Outputs: sdf available on [zenodo](https://zenodo.org/record/7023191) <br>
+fragment: cfh_xx_fragN.sdf <br>
+
 
 ### 3. Compute IChem interactions: 
-`<path_to_your_ichem>/IChem ../cdk8_structures/5hbh_protein.mol2 <fragment>.mol2 > <fragment>.ifp`
+`<path_to_your_ichem>/IChem ../cdk8_structures/5hbh_protein.mol2 <fragment>.mol2 > <fragment>.ifp` <br>
+
+Outputs: sdf available on [zenodo](https://zenodo.org/record/7023191) <br>
+interactions file: cfh_xx_fragN.ifp <br>
+
 
 <br>
 
