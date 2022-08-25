@@ -4,9 +4,9 @@
 
 `envs/` --> conda environments <br>
 `cdk8_structures/` --> target structures <br>
-`aligned_fragments.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/deposit/7023191) --> output data after steps 1-3, input for step 4+ <br>
+`aligned_fragments.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> output data after steps 1-3, input for step 4+ <br>
 `scripts/` --> scripts to for library generation <br>
-`output_files.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/deposit/7023191) --> data obtained at each step, and depedencies <br>
+`output_files.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> data obtained at each step, and depedencies <br>
 
 
 ## Requirements
