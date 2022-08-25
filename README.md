@@ -57,10 +57,15 @@ interactions file: cfh_xx_fragN.ifp <br>
 <br>
 
 ## Part 2/ Selection and annotation of relevant fragments
-To reproduce this step, the required data out of steps 1-to-3 were made availaible at [link](link)
+To reproduce this step, the required data out of steps 1-to-3 were made availaible at https://zenodo.org/record/7023191 as `aligned_fragments.tgz` and ouputs obtained `output_files.tgz` <br>
 
 ### 4. Select top-scored subpockets and annotate fragments according to six predefined CDK8 areas
+
+`tar -xzf aligned_fragments.tgz` <br>
+`cd aligned_fragments/` <br>
+
 current directory: `aligned_fragments` containing data from steps 1-3 <br>
+
 
 assignment of CDK8 areas <br>
 `conda deactivate` <br>
@@ -77,7 +82,11 @@ Outputs: <br>
 available in `<this_repo>/output_files/` <br>
 <br>
 
+
 ## Part 3/ Fragments linking
+
+To reproduce these steps, the required data were made availaible at https://zenodo.org/record/7023191 as `aligned_fragments.tgz` and ouputs obtained `output_files.tgz` <br>
+
 
 ### 5. Enumerate candidates for linking: pairs of fragments and atoms
 `python ../scripts/linkable_fragments_round1_job.py --hinge subpocket_p0_hinge.list --gate subpocket_p0_gate.list --solv1 subpocket_p0_solv_1.list --solv2 subpocket_p0_solv_2.list --alphac subpocket_p6_alphaC.list --lys52 subpocket_p6_lys52.list` <br>
