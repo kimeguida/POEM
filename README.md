@@ -1,9 +1,16 @@
+
+
 ## Content
-scripts/ --> scripts to for library generation <br>
-output_files/ --> files obtained at each step, and depedencies <br>
-envs/ --> conda environments <br>
-cdk8_structures/ --> target structures <br>
-[link to update](link) --> output data for steps 1-3
+
+`envs/` --> conda environments <br>
+`cdk8_structures/` --> target structures <br>
+`aligned_fragments.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/deposit/7023191) --> output data after steps 1-3, input for step 4+ <br>
+`scripts/` --> scripts to for library generation <br>
+`output_files.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/deposit/7023191) --> data obtained at each step, and depedencies <br>
+
+
+## Requirements
+[Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) environements with python 3.6+.
 
 
 ## Part 1/ Subpocket screening and fragments preparation
@@ -140,4 +147,4 @@ Output: `hit12_round2_mols_descriptors.tsv` <br>
 candidates for synthesis  <br>
 `python ../scripts/library_round2.py -i hit12_round2_mols_descriptors.tsv --sascore hit12_round2_sascore_pass.tsv -o libr2.txt` <br>
 
-Outputs:`libr2.txt` <br>
+Output:`libr2.txt` <br>
