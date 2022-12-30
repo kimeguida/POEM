@@ -1,12 +1,9 @@
 # POEM: Pocket-Oriented Elaboration of molecules
 [![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/) 
-
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7023191.svg)](https://doi.org/10.5281/zenodo.7023191)  
 
+![POEM ](./docs/_img/poem_toc_jm2c00931_0011.jpg)
 
-<p align="center">
-<img src="https://github.com/kimeguida/POEM/blob/master/docs/_img/poem_toc_jm2c00931_0011.jpg" width="350" />
-</p>
 
 
 ## Description
