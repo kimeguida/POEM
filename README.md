@@ -2,9 +2,7 @@
 [![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7023191.svg)](https://doi.org/10.5281/zenodo.7023191)  
 
-<p align="center">  
 ![POEM](./docs/_img/poem_toc_jm2c00931_0011.jpg)  
-</p>
 
 
 ## Description
