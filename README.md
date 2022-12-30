@@ -2,8 +2,9 @@
 [![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7023191.svg)](https://doi.org/10.5281/zenodo.7023191)  
 
-![POEM](./docs/_img/poem_toc_jm2c00931_0011.jpg)
-
+<p align="center">  
+![POEM](./docs/_img/poem_toc_jm2c00931_0011.jpg)  
+</p>
 
 
 ## Description
@@ -75,7 +76,7 @@ Outputs:
 `<path_to_your_ichem>/IChem ../cdk8_structures/5hbh_protein.mol2 <fragment>.mol2 > <fragment>.ifp` <br>
 
 Outputs: 
-- sdf available on [zenodo](https://zenodo.org/record/7023191)
+- interactions available on [zenodo](https://zenodo.org/record/7023191)
 - interactions file: cfh_xx_fragN.ifp
 <br>
 
@@ -93,7 +94,7 @@ current directory: `aligned_fragments` containing data from steps 1-3 <br>
 
 assignment of CDK8 areas <br>
 `conda deactivate` <br>
-`conda activate delinker` (state of our conda env: envs/delinker.yml)<br>
+`conda activate delinker` (state of our conda env: `envs/delinker.yml`)<br>
 `python ../scripts/select_fragments_round1.py -f ../output_files/procare_scores.tsv -d . -p ../cdk8_structures/5hbh_protein.mol2 -c ../cdk8_structures/5hbh_cavityALL_p0-p1-p6.mol2` <br>
 
 Outputs: <br>
@@ -201,11 +202,13 @@ Output:
 
 
 ## Help and issues
+
+##### Signal issues
 https://github.com/kimeguida/POEM/issues
 
 ##### Support contacts
-Merveille Eguida: keguida'[at]'unistra[dot]fr  
-Didier Rognan, PhD: rognan'[at]'unistra[dot]fr
+Merveille Eguida: keguida'[at]'unistra'[dot]'fr  
+Didier Rognan, PhD: rognan'[at]'unistra'[dot]'fr
 
 
 ## Prospective applications
