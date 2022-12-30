@@ -1,16 +1,41 @@
+# POEM: Pocket-Oriented Elaboration of molecules
+[![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/) 
+
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7023191.svg)](https://doi.org/10.5281/zenodo.7023191)  
+
+
+<p align="center">
+<img src="https://github.com/kimeguida/POEM/blob/master/docs/_img/poem_toc_jm2c00931_0011.jpg" width="350" />
+</p>
+
+
+## Description
+This project aims at using information from *ligand pieces* bound to protein subpockets to 
+automatically build new molecules tailored to a particular target pocket 
+on the basis of the subpockets/target pocket estimated similarities.  
+This workflow was tested to design new sub-micromolar hit candidates for CDK8 inhibition:  
+
+Eguida M., Schmitt-Valencia C., Hibert M., Villa, P. and Rognan, D. 
+Target-Focused Library Design by Pocket-Applied Computer Vision and Fragment Deep Generative Linking. 
+J. Med. Chem. 2022, 65, 13771–13783. https://doi.org/10.1021/acs.jmedchem.2c00931  
+
+Please note that the publication refers to release v1.0.0.
 
 
 ## Content
 
 `envs/` --> conda environments <br>
 `cdk8_structures/` --> target structures <br>
-`aligned_fragments.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> output data after steps 1-3, input for step 4+ <br>
+`aligned_fragments.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> output data after steps 1-3, input for step 4+ <br>
 `scripts/` --> scripts to for library generation <br>
-`output_files.tgz` available for download at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> data obtained at each step, and depedencies <br>
+`output_files.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> data obtained at each step, and depedencies <br>
 
 
 ## Requirements
-[Conda](https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html) environements with python 3.6+.
+- Conda: https://docs.conda.io/projects/conda/en/latest/user-guide/install/linux.html environements with python 3.6+.
+- IChem: http://bioinfo-pharma.u-strasbg.fr/labwebsite/download.html
+- ProCare: https://github.com/kimeguida/ProCare
+- DeLinker: https://github.com/oxpig/DeLinker
 
 
 ## Part 1/ Subpocket screening and fragments preparation
@@ -166,3 +191,47 @@ candidates for synthesis  <br>
 `python ../scripts/library_round2.py -i hit12_round2_mols_descriptors.tsv --sascore hit12_round2_sascore_pass.tsv -o libr2.txt` <br>
 
 Output:`libr2.txt` <br>
+
+
+
+## Help and issues
+https://github.com/kimeguida/POEM/issues
+
+##### Support contacts
+Merveille Eguida: keguida'[at]'unistra[dot]fr  
+Didier Rognan, PhD: rognan'[at]'unistra[dot]fr
+
+
+## Prospective applications
+1. Eguida, M.; Schmitt-Valencia, C.; Hibert, M.; Villa, P.; Rognan, D. Target-Focused Library Design by Pocket-Applied Computer Vision and Fragment Deep Generative Linking. J. Med. Chem. 2022, 65, 13771–13783. https://doi.org/10.1021/acs.jmedchem.2c00931
+
+2. CACHE hits prediction Challenge #1 https://cache-challenge.org  
+
+
+## Citation
+
+If you use POEM, please cite:  
+ 
+``` bib
+@article{doi:10.1021/acs.jmedchem.2c00931,
+abstract = {We here describe a computational approach (POEM: Pocket Oriented Elaboration of Molecules) to drive the generation of target-focused libraries while taking advantage of all publicly available structural information on protein-ligand complexes. A collection of 31 384 PDB-derived images with key shapes and pharmacophoric properties, describing fragment-bound microenvironments, is first aligned to the query target cavity by a computer vision method. The fragments of the most similar PDB subpockets are then directly positioned in the query cavity using the corresponding image transformation matrices. Lastly, suitable connectable atoms of oriented fragment pairs are linked by a deep generative model to yield fully connected molecules. POEM was applied to generate a library of 1.5 million potential cyclin-dependent kinase 8 inhibitors. By synthesizing and testing as few as 43 compounds, a few nanomolar inhibitors were quickly obtained with limited resources in just two iterative cycles.},
+author = {Eguida, Merveille; Schmitt-Valencia, Christel; Hibert, Marcel; Villa, Pascal and Rognan, Didier},
+title = {{Target-Focused Library Design by Pocket-Applied Computer Vision and Fragment Deep Generative Linking}},
+journal = {Journal of Medicinal Chemistry},
+volume = {65},
+number = {20},
+pages = {13771--13783},
+year = {2022},
+doi = {10.1021/acs.jmedchem.2c00931},
+URL = {https://doi.org/10.1021/acs.jmedchem.2c00931},
+}
+```
+
+
+
+## References
+
+- RDKit: Open-source cheminformatics; http://www.rdkit.org, https://github.com/rdkit/rdkit
+- Eguida, M.; Rognan, D. A Computer Vision Approach to Align and Compare Protein Cavities: Application to Fragment-Based Drug Design. J. Med. Chem. 2020, 63, 7127–7142.
+- Imrie, F.; Bradley, A. R.; van der Schaar, M.; Deane, C. M. Deep Generative Models for 3D Linker Design. J. Chem. Inf. Model. 2020, 60, 1983–1995.
+- Desaphy, J.; Bret, G.; Rognan, D.; Kellenberger, E. Sc-PDB: A 3D-Database of Ligandable Binding Sites—10 Years On. Nucleic Acids Res. 2014, 43, D399–D404.
