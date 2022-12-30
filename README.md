@@ -15,7 +15,7 @@ Eguida M., Schmitt-Valencia C., Hibert M., Villa, P. and Rognan, D.
 Target-Focused Library Design by Pocket-Applied Computer Vision and Fragment Deep Generative Linking. 
 J. Med. Chem. 2022, 65, 13771–13783. https://doi.org/10.1021/acs.jmedchem.2c00931  
 
-**[Please note that the publication refers to release v1.0.0](https://github.com/kimeguida/POEM/releases/tag/v1.0.0)**
+**[Please note that the publication refers to [release v1.0.0](https://github.com/kimeguida/POEM/releases/tag/v1.0.0)**
 
 
 ## Content
