@@ -2,13 +2,13 @@
 [![Generic badge](https://img.shields.io/badge/version-1.0.0-blue.svg)](https://shields.io/) 
 [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.7023191.svg)](https://doi.org/10.5281/zenodo.7023191)  
 
-![POEM ](./docs/_img/poem_toc_jm2c00931_0011.jpg)
+![POEM](./docs/_img/poem_toc_jm2c00931_0011.jpg)
 
 
 
 ## Description
 This project aims at using information from *ligand pieces* bound to protein subpockets to 
-automatically build new molecules tailored to a particular target pocket 
+(semi-) automatically build new molecules tailored to a particular target pocket 
 on the basis of the subpockets/target pocket estimated similarities.  
 This workflow was tested to design new sub-micromolar hit candidates for CDK8 inhibition:  
 
@@ -21,11 +21,11 @@ Please note that the publication refers to release v1.0.0.
 
 ## Content
 
-`envs/` --> conda environments <br>
-`cdk8_structures/` --> target structures <br>
-`aligned_fragments.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> output data after steps 1-3, input for step 4+ <br>
-`scripts/` --> scripts to for library generation <br>
-`output_files.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) --> data obtained at each step, and depedencies <br>
+- `envs/` ---> conda environments
+- `cdk8_structures/` ---> target structures
+- `scripts/` ---> scripts for library generation
+- `aligned_fragments.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) ---> output data after steps 1-3, input for step 4+
+- `output_files.tgz` downloadable at [10.5281/zenodo.7023191](https://zenodo.org/record/7023191) ---> data obtained at each step, and depedencies
 
 
 ## Requirements
@@ -33,7 +33,7 @@ Please note that the publication refers to release v1.0.0.
 - IChem: http://bioinfo-pharma.u-strasbg.fr/labwebsite/download.html
 - ProCare: https://github.com/kimeguida/ProCare
 - DeLinker: https://github.com/oxpig/DeLinker
-
+- RDKit:  http://www.rdkit.org, https://github.com/rdkit/rdkit
 
 ## Part 1/ Subpocket screening and fragments preparation
 
@@ -54,9 +54,10 @@ ProCare: [https://github.com/kimeguida/ProCare](https://github.com/kimeguida/Pro
 `cd aligned_fragments/` <br>
 `python ../scripts/procare_launcher.py -s <subpocket> -t ../cdk8_structures/5hbh_cavityALL_p0-p1-p6.mol2 --transform --ligandtransform <fragment>` <br>
 
-Outputs: aligned subpockets, fragments and `procare_scores.tsv` available on [zenodo](https://zenodo.org/record/7023191) <br>
-subpocket: cfh_xx_fragN_cavity4.mol2 <br>
-fragment: cfh_xx_fragN.mol2 <br>
+Outputs: 
+- aligned subpockets, fragments and `procare_scores.tsv` available on [zenodo](https://zenodo.org/record/7023191) 
+- subpocket: cfh_xx_fragN_cavity4.mol2
+- fragment: cfh_xx_fragN.mol2 
 
 
 ### 2. Convert aligned fragments from mol2 to sdf
@@ -65,18 +66,19 @@ We used OpenEye python toolkits (state of our conda env: envs/oepython.yml): <br
 `conda activate oepython` <br>
 `../scripts/convert.py <fragment>.mol2 <fragment>.sdf` <br>
 
-Outputs: sdf available on [zenodo](https://zenodo.org/record/7023191) <br>
-fragment: cfh_xx_fragN.sdf <br>
+Outputs: 
+- sdf available on [zenodo](https://zenodo.org/record/7023191)
+- fragment: cfh_xx_fragN.sdf
 
 
 ### 3. Compute IChem interactions: 
 `<path_to_your_ichem>/IChem ../cdk8_structures/5hbh_protein.mol2 <fragment>.mol2 > <fragment>.ifp` <br>
 
-Outputs: sdf available on [zenodo](https://zenodo.org/record/7023191) <br>
-interactions file: cfh_xx_fragN.ifp <br>
-
-
+Outputs: 
+- sdf available on [zenodo](https://zenodo.org/record/7023191)
+- interactions file: cfh_xx_fragN.ifp
 <br>
+
 
 ## Part 2/ Selection and annotation of relevant fragments
 To reproduce this step, the required data out of steps 1-to-3 were made availaible at https://zenodo.org/record/7023191 as `aligned_fragments.tgz` and ouputs obtained `output_files.tgz` <br>
@@ -95,12 +97,12 @@ assignment of CDK8 areas <br>
 `python ../scripts/select_fragments_round1.py -f ../output_files/procare_scores.tsv -d . -p ../cdk8_structures/5hbh_protein.mol2 -c ../cdk8_structures/5hbh_cavityALL_p0-p1-p6.mol2` <br>
 
 Outputs: <br>
-`subpocket_p0_gate.list` which corresponds to GA1 <br>
-`subpocket_p0_hinge.list` --> H <br>
-`subpocket_p0_solv_1.list` --> SE2 <br>
-`subpocket_p0_solv_2.list` --> SE1 <br>
-`subpocket_p6_alphaC.list` --> AC <br>
-`subpocket_p6_lys52.list` --> GA2 <br>
+- `subpocket_p0_gate.list` which corresponds to GA1 in paper <br>
+- `subpocket_p0_hinge.list` ---> H <br>
+- `subpocket_p0_solv_1.list` ---> SE2 <br>
+- `subpocket_p0_solv_2.list` ---> SE1 <br>
+- `subpocket_p6_alphaC.list` ---> AC <br>
+- `subpocket_p6_lys52.list` ---> GA2 <br>
 available in `<this_repo>/output_files/` <br>
 <br>
 
@@ -113,8 +115,8 @@ To reproduce these steps, the required data were made availaible at https://zeno
 ### 5. Enumerate candidates for linking: pairs of fragments and atoms
 `python ../scripts/linkable_fragments_round1_job.py --hinge subpocket_p0_hinge.list --gate subpocket_p0_gate.list --solv1 subpocket_p0_solv_1.list --solv2 subpocket_p0_solv_2.list --alphac subpocket_p6_alphaC.list --lys52 subpocket_p6_lys52.list` <br>
 
-Outputs: <br>
-`linkable_fragments_round1_<N>.list` with N in {0, 1, 2, 3, 4, 5, 6} available in `<this_repo>/output_files/` <br>
+Outputs:
+- `linkable_fragments_round1_<N>.list` with N in {0, 1, 2, 3, 4, 5, 6} available in `<this_repo>/output_files/` <br>
 
 ### 6. Linking with DeLinker
 DeLinker: https://github.com/oxpig/DeLinker <br>
@@ -130,64 +132,71 @@ Sometimes, no linker is generated and DeLinker might return truncated attempts.<
 `python ../scripts/get_linker.py --file generation_<N>.smi.gz --fragsdir . --pathdelinker <your_path_to_DeLinker>/DeLinker/` <br>
 
 Outputs: <br>
-`generation_complete.smi` <br>
-`generation_uncomplete.smi` <br>
+- `generation_complete.smi` <br>
+- `generation_uncomplete.smi` <br>
 
 
 ### 8. Name molecules and filter with openEye Filter
 SMILES were assigned IDs to keep track of the molecules infos. Filter will protonate and generate canonical SMILES different from RDKit's. <br>
 `python ../scripts/index_generated_molecules.py -i generation_complete.smi -o generation_complete_indexed.smi` <br>
 
-Output: `generation_complete_indexed.smi` <br>
+Output: 
+- `generation_complete_indexed.smi` <br>
 
 `<path_to_openeye>/filter -in generation_complete_indexed.smi -out druglike_molecules.smi -fail druglike_failed_molecules.smi -filter ../output_files/filter_labo_cdk8.txt` <br>
 
 Check that other annotations in the file did not affect how Filter processed the SMILES. In our case, we extracted the SMILES and indexes to a separate file `molecules.smi`. <br>
 
-Output: `druglike_molecules.smi` <br>
+Output: 
+- `druglike_molecules.smi` <br>
 
 ### 9. Synthetic accessibility, descriptors, filtering:
 SAscore from [https://github.com/rdkit/rdkit/blob/master/Contrib/SA_Score/sascorer.py](https://github.com/rdkit/rdkit/blob/master/Contrib/SA_Score/sascorer.py) <br>
 `python ../scripts/get_sascore.py -i druglike_molecules.smi -o druglike_molecules_sascore.tsv` <br>
-Output: `druglike_molecules_sascore.tsv` <br>
+Output: 
+- `druglike_molecules_sascore.tsv` <br>
 
 RDKit descriptors <br>
 `python ../scripts/get_druglike_descriptors.py -i druglike_molecules.smi -o druglike_molecules_descriptors.tsv` <br>
 `python ../scripts/get_linker_descriptors.py -i generation_complete_indexed.smi -o generation_linker_descriptors.tsv` <br>
 
 Outputs: <br>
-`druglike_molecules_descriptors.tsv` <br>
-`generation_linker_descriptors.tsv` <br>
+- `druglike_molecules_descriptors.tsv`
+- `generation_linker_descriptors.tsv` 
 
 Clean generated linkers, remove too flexible, hydrophobic <br>
 `python ../scripts/filter_linker.py -i generation_linker_descriptors.tsv -o linker_discarded.tsv` <br>
 
-Output: `linker_discarded.tsv` <br>
+Output: 
+- `linker_discarded.tsv` <br>
 
 ### 10. Extract round 1 library
 `python ../scripts/library_round1.py --descriptor druglike_molecules_descriptors.tsv --sascore druglike_molecules_sascore.tsv --discarded linker_discarded.tsv -o libr1.txt`
 
-Output: `libr1.txt` <br>
+Output: 
+- `libr1.txt` <br>
 
 ### 11. Grow molecules in round 2 library from a selected hit
 Example of hit compound 12 <br>
 `python ../scripts/round2_fuse_mols.py --dl druglike_molecules.smi --gen generation_complete_indexed.smi --origin ../output_files/frag_origin.tsv --discarded linker_discarded.tsv --procare ../output_files/procare_scores.tsv` <br>
 
 Outputs: <br>
-`hit12_round2_mols.tsv` <br>
-`hit12_round2_sascore_pass.tsv` <br>
+- `hit12_round2_mols.tsv` <br>
+- `hit12_round2_sascore_pass.tsv` <br>
 
 
 ### 12. Filter and generate round 2 library
 RDKit descriptors <br>
 `python ../scripts/get_round2_descriptors.py -i hit12_round2_mols.tsv -o hit12_round2_mols_descriptors.tsv` <br>
 
-Output: `hit12_round2_mols_descriptors.tsv` <br>
+Output: 
+- `hit12_round2_mols_descriptors.tsv` <br>
 
 candidates for synthesis  <br>
 `python ../scripts/library_round2.py -i hit12_round2_mols_descriptors.tsv --sascore hit12_round2_sascore_pass.tsv -o libr2.txt` <br>
 
-Output:`libr2.txt` <br>
+Output:
+- `libr2.txt` <br>
 
 
 
@@ -229,6 +238,8 @@ URL = {https://doi.org/10.1021/acs.jmedchem.2c00931},
 ## References
 
 - RDKit: Open-source cheminformatics; http://www.rdkit.org, https://github.com/rdkit/rdkit
+- Da Silva, F.; Desaphy, J.; Rognan, D. IChem: A Versatile Toolkit for Detecting, Comparing, and Predicting Protein–Ligand Interactions. ChemMedChem 2018, 13, 507–510.
+- Desaphy, J.; Bret, G.; Rognan, D.; Kellenberger, E. Sc-PDB: A 3D-Database of Ligandable Binding Sites—10 Years On. Nucleic Acids Res. 2014, 43, D399–D404.
 - Eguida, M.; Rognan, D. A Computer Vision Approach to Align and Compare Protein Cavities: Application to Fragment-Based Drug Design. J. Med. Chem. 2020, 63, 7127–7142.
 - Imrie, F.; Bradley, A. R.; van der Schaar, M.; Deane, C. M. Deep Generative Models for 3D Linker Design. J. Chem. Inf. Model. 2020, 60, 1983–1995.
-- Desaphy, J.; Bret, G.; Rognan, D.; Kellenberger, E. Sc-PDB: A 3D-Database of Ligandable Binding Sites—10 Years On. Nucleic Acids Res. 2014, 43, D399–D404.
+
