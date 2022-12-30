@@ -98,8 +98,12 @@ def in_cone(atom_1_, exit_point_, atom_2_, angle_=(np.pi/4), h_=6):
     inside = False
     radius = np.tan(angle_) * h_
     vect_axis = np.array(exit_point_) - np.array(atom_1_)
-    axis = vect_axis / np.linalg.norm(vect_axis) * h_ # norm of axis should be h_
+    #axis = vect_axis / np.linalg.norm(vect_axis) * h_ # norm of axis should be h_, version 1.0.0
+	# fixed cone projection
+	# previous cone implementation limted to right isoceles triangle of length h_
+	axis = vect_axis / np.linalg.norm(vect_axis) # norm of axis should be 1, version 2.0.0
     #print(np.linalg.norm(axis))
+	
     proj_axis_dist = np.dot((np.array(atom_2_)-np.array(atom_1_)), axis)
     #print(proj_axis_dist)
     #if h_ >= proj_axis_dist >= 0: # means atom found in the right exit direction and cone heigth limited to 6
